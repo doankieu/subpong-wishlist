@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SubPong | Founders Waitlist</title>
+    <meta
+      name="description"
+      content="Exclusive underground robotic ping pong. Private pods, adaptive AI servers, and haptic target scoring."
+    />
+    <meta property="og:title" content="SubPong Founders Waitlist" />
+    <meta
+      property="og:description"
+      content="Seven minutes. Infinite flow. Join the SubPong founders waitlist."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/video/subpong-poster.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:wght@300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background-layer" aria-hidden="true">
+      <div class="background-split">
+        <video
+          class="background-video split-video left-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        >
+          <source src="assets/video/pingpong%20challenge.MOV" />
+          <source
+            src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-technology-background-with-lines-and-dots-33755-large.mp4"
+            type="video/mp4"
+          />
+        </video>
+
+        <video
+          class="background-video split-video right-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        >
+          <source src="assets/video/ppong%20challenge%202.mov" />
+          <source
+            src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-technology-background-with-lines-and-dots-33755-large.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+
+      <div class="background-overlay"></div>
+      <video
+        class="background-video background-video-mobile"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      >
+        <source src="assets/video/pingpong%20challenge.MOV" />
+        <source
+          src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-technology-background-with-lines-and-dots-33755-large.mp4"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+
+    <header id="topbar" class="topbar">
+      <div class="bar-inner">
+        <a class="brand" href="#">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
+            </svg>
+          </span>
+          <span class="brand-word">SubPong</span>
+        </a>
+        <nav>
+          <a href="#concept">Concept</a>
+          <a href="#waitlist">Waitlist</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content reveal">
+          <p class="eyebrow">The Future of Urban Sport</p>
+          <h1>
+            Step In. <span>Play On.</span><br />
+            Private <em>Pods</em>
+          </h1>
+          <p class="hero-copy">
+            No partner needed. Just walk in and play against a smart bot that
+            matches your level.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#waitlist">
+              Get first access
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h12m-5-5 5 5-5 5" />
+              </svg>
+            </a>
+            <p class="hero-note">Limited early slots in private pods.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="concept" class="panel reveal">
+        <p class="micro">Concept</p>
+        <h2>Engineered for seven-minute cognitive reset sessions.</h2>
+        <p>
+          Regular ping pong needs the right partner. SubPong does not. Step
+          into a private pod and start playing instantly at your own pace.
+        </p>
+      </section>
+
+      <section id="waitlist" class="waitlist-wrap">
+        <div class="waitlist-card reveal">
+          <div class="glow glow-left" aria-hidden="true"></div>
+          <div class="glow glow-right" aria-hidden="true"></div>
+
+          <div class="waitlist-head">
+            <h2>Founders Waitlist</h2>
+            <p>
+              We are launching in Sydney. Secure founding membership for priority booking and a limited edition paddle kit.
+            </p>
+          </div>
+
+          <div id="success-state" class="success-state" hidden>
+            <div class="success-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="m5 13 4 4L19 7" />
+              </svg>
+            </div>
+            <h3>Access Granted</h3>
+            <p>Invitation details will arrive in your inbox within 24 hours.</p>
+          </div>
+
+          <form
+            id="wishlist-form"
+            action="https://formspree.io/f/mdaybnqp"
+            method="POST"
+          >
+            <label>
+              Your Name
+              <input
+                id="name"
+                type="text"
+                name="name"
+                placeholder="YOUR NAME"
+                required
+              />
+            </label>
+            <label>
+              Your Email
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="EMAIL@DOMAIN.COM"
+                required
+              />
+            </label>
+            <label>
+              Your Postcode
+              <input
+                id="postcode"
+                type="number"
+                name="postcode"
+                placeholder="2000"
+                required
+              />
+            </label>
+
+            <input type="hidden" name="_subject" value="New SubPong waitlist signup" />
+            <label class="hp-field" aria-hidden="true">
+              Leave this field empty
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+            </label>
+
+            <button id="submit-btn" class="btn btn-secondary" type="submit">
+              Request Invitation
+            </button>
+            <p id="form-message" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="foot-brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
+          </svg>
+        </span>
+        <p>SubPong</p>
+      </div>
+
+      <div class="foot-links">
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Press Kit</a>
+      </div>
+
+      <div class="launch-pill">
+        <span></span>
+        Launch protocol: Sydney v2.0
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

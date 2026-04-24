@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="SubPong launch poster">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#020202" />
+      <stop offset="60%" stop-color="#150710" />
+      <stop offset="100%" stop-color="#080808" />
+    </linearGradient>
+    <radialGradient id="spot" cx="0.22" cy="0.3" r="0.7">
+      <stop offset="0%" stop-color="#ff2f8a" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#ff2f8a" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)" />
+  <rect width="1600" height="900" fill="url(#spot)" />
+  <g stroke="#ff5ea8" stroke-opacity="0.2">
+    <path d="M0 700h1600" />
+    <path d="M0 640h1600" />
+    <path d="M0 580h1600" />
+  </g>
+  <text x="130" y="420" fill="#f9e9f2" font-size="130" font-family="Rajdhani, sans-serif" letter-spacing="4">
+    SUBPONG
+  </text>
+  <text x="136" y="496" fill="#ff6eb1" font-size="42" font-family="Space Grotesk, sans-serif" letter-spacing="2">
+    7-minute robot ping pong sessions
+  </text>
+</svg>
