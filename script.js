@@ -63,14 +63,32 @@ form.addEventListener('submit', async (event) => {
       body: formData,
     });
 
+    if (response.status === 403) {
+      // Formspree can block AJAX when reCAPTCHA/custom key is enabled.
+      // Fall back to native form submission to keep production flow working.
+      setLoading(false);
+      message.textContent = 'Redirecting to secure submit...';
+      form.submit();
+      return;
+    }
+
     if (!response.ok) {
-      throw new Error('Submission failed');
+      let serverMessage = 'Could not submit right now. Please retry in a minute.';
+      try {
+        const data = await response.json();
+        if (data && typeof data.error === 'string' && data.error.trim()) {
+          serverMessage = data.error;
+        }
+      } catch (parseError) {
+        // Keep default message when response body is not JSON.
+      }
+      throw new Error(serverMessage);
     }
 
     setLoading(false);
     showSuccess();
   } catch (error) {
     setLoading(false);
-    message.textContent = 'Could not submit right now. Please retry in a minute.';
+    message.textContent = error instanceof Error ? error.message : 'Could not submit right now. Please retry in a minute.';
   }
 });
