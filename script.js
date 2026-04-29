@@ -4,6 +4,16 @@ const form = document.getElementById('wishlist-form');
 const message = document.getElementById('form-message');
 const submitBtn = document.getElementById('submit-btn');
 const successState = document.getElementById('success-state');
+const primaryCta = document.querySelector('.hero .btn-primary');
+const outboundLinks = document.querySelectorAll('.foot-links a');
+
+const trackEvent = (eventName, params = {}) => {
+  if (typeof window.gtag !== 'function') {
+    return;
+  }
+
+  window.gtag('event', eventName, params);
+};
 
 const setTopbarState = () => {
   if (!topbar) {
@@ -42,6 +52,25 @@ const showSuccess = () => {
   successState.hidden = false;
 };
 
+if (primaryCta) {
+  primaryCta.addEventListener('click', () => {
+    trackEvent('cta_click', {
+      cta_name: 'get_first_access',
+      cta_location: 'hero',
+    });
+  });
+}
+
+outboundLinks.forEach((link) => {
+  link.addEventListener('click', () => {
+    const label = (link.textContent || '').trim().toLowerCase();
+    trackEvent('outbound_click', {
+      destination: label || 'social',
+      link_url: link.href,
+    });
+  });
+});
+
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
   const action = form.getAttribute('action') || '';
@@ -66,6 +95,9 @@ form.addEventListener('submit', async (event) => {
     if (response.status === 403) {
       // Formspree can block AJAX when reCAPTCHA/custom key is enabled.
       // Fall back to native form submission to keep production flow working.
+      trackEvent('waitlist_submit_error', {
+        reason: 'formspree_403_fallback',
+      });
       setLoading(false);
       message.textContent = 'Redirecting to secure submit...';
       form.submit();
@@ -86,9 +118,15 @@ form.addEventListener('submit', async (event) => {
     }
 
     setLoading(false);
+    trackEvent('waitlist_submit_success', {
+      form_name: 'founders_waitlist',
+    });
     showSuccess();
   } catch (error) {
     setLoading(false);
+    trackEvent('waitlist_submit_error', {
+      reason: error instanceof Error ? error.message : 'unknown_error',
+    });
     message.textContent = error instanceof Error ? error.message : 'Could not submit right now. Please retry in a minute.';
   }
 });

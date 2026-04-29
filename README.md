@@ -27,6 +27,21 @@ Open `index.html` directly, or run a local static server.
 2. Replace `https://formspree.io/f/your-form-id` in `index.html` with your form endpoint.
 3. Test a submission.
 
+## Analytics tracking (GA4)
+
+This project includes Google Analytics 4 page and event tracking.
+
+1. Open [index.html](index.html) and confirm the GA4 Measurement ID is correct for your property (currently `G-2MR55XKPD6`).
+2. Deploy the site.
+3. In GA4 Realtime, verify these events:
+   - `page_view` (automatic)
+   - `waitlist_submit_success`
+   - `waitlist_submit_error`
+   - `cta_click`
+   - `outbound_click`
+
+Privacy note: current tracking setup does not send personal form fields (name, email, postcode).
+
 ## Deploy for free
 
 ### Cloudflare Pages (recommended)
